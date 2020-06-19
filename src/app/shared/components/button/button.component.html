@@ -1,0 +1,17 @@
+<div
+  class="button"
+  [ngClass]="{ disabled: disabled, large: isLarge, approve: isApprove }"
+  (click)="onClick($event)"
+  *ngIf="type === 'button'"
+>
+  {{ text }}
+</div>
+<button
+  type="submit"
+  class="button"
+  [ngClass]="{ disabled: disabled, large: isLarge, approve: isApprove }"
+  *ngIf="type === 'submit'"
+  [disabled]="disabled"
+>
+  {{ text }}
+</button>
