@@ -11,12 +11,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ButtonComponent } from './shared/components/button/button.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { HttpClientModule } from '@angular/common/http';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    ButtonComponent
+    ButtonComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,

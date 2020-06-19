@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
         this.userService.changeUserLoggedInStatus();
         this.userService.setUsername((data as any).user.username);
         setCookie('connectedUser', (data as any).user.username, 100);
-        this.router.navigate(['home']);
+        this.router.navigateByUrl('home');
       } else {
         this.loginErrorMessage = 'Invalid credentials';
       }
