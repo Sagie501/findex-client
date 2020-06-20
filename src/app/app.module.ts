@@ -12,13 +12,19 @@ import { ButtonComponent } from './shared/components/button/button.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { HttpClientModule } from '@angular/common/http';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { HomeComponent } from './components/home/containers/home.component';
+import { SidebarComponent } from './components/home/components/sidebar/sidebar.component';
+import { HeaderComponent } from './components/home/components/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     ButtonComponent,
-    SignUpComponent
+    SignUpComponent,
+    HomeComponent,
+    SidebarComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

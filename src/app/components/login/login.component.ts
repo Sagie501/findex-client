@@ -24,6 +24,9 @@ export class LoginComponent implements OnInit {
   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
+    this.userService.getAllUsers().subscribe((res) => {
+      console.log(res);
+    });
   }
 
   onSubmit() {

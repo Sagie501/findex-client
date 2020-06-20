@@ -1,0 +1,66 @@
+<div class="welcome">
+  <div class="welcome__text">
+    <span class="welcome--greeting">{{getGreetingSentence() + ", " + (loggedInUser?.firstName || "Guest") + "!"}}</span>
+  </div>
+</div>
+
+<div class="sidebar">
+  <div class="sidebar__top">
+    <a class="sidebar-link" [ngClass]="{ 'sidebar-link__active': isActiveRoute('/home/y-items') }"
+       routerLink="/home/my-items">
+      <svg class="sidebar-link__icon">
+        <use xlink:href="assets/linearicons.svg#lnr-home"></use>
+      </svg>
+      <span class="sidebar-link__margin">My Items</span>
+    </a>
+    <a class="sidebar-link" [ngClass]="{ 'sidebar-link__active': isActiveRoute('/home/give-something') }"
+       routerLink="/home/give-something">
+      <svg class="sidebar-link__icon">
+        <use xlink:href="assets/linearicons.svg#lnr-store"></use>
+      </svg>
+      <span class="sidebar-link__margin">Give Something</span>
+    </a>
+    <a class="sidebar-link" [ngClass]="{'sidebar-link__active': isActiveRoute('/home/take-something')}"
+       routerLink="/home/take-something">
+      <svg class="sidebar-link__icon">
+        <use xlink:href="assets/linearicons.svg#lnr-cart"></use>
+      </svg>
+      <span>Take Something</span>
+    </a>
+    <a class="sidebar-link" [ngClass]="{'sidebar-link__active': isActiveRoute('/home/statistics')}"
+       routerLink="/home/statistics">
+      <svg class="sidebar-link__icon">
+        <use xlink:href="assets/linearicons.svg#lnr-pie-chart"></use>
+      </svg>
+      <span>Statistics</span>
+    </a>
+    <a class="sidebar-link" [ngClass]="{ 'sidebar-link__active': isActiveRoute('/home/messages') }"
+       routerLink="/home/messages">
+      <svg class="sidebar-link__icon">
+        <use xlink:href="assets/linearicons.svg#lnr-alarm"></use>
+      </svg>
+      <span>Messages</span>
+    </a>
+    <a class="sidebar-link" [ngClass]="{ 'sidebar-link__active': isActiveRoute('/home/contact-us') }"
+       routerLink="/home/contact-us">
+      <svg class="sidebar-link__icon">
+        <use xlink:href="assets/linearicons.svg#lnr-list"></use>
+      </svg>
+      <span>Contact Us</span>
+    </a>
+  </div>
+
+  <!--  TODO: Add Whether Here-->
+
+  <div class="sidebar__bottom">
+    <a class="sidebar-link sidebar-link__end" routerLink="/" (click)="logout()">
+      <svg class="sidebar-link__icon">
+        <use xlink:href="assets/linearicons.svg#lnr-exit"></use>
+      </svg>
+      <span>Logout</span>
+    </a>
+    <div class="legal">
+      © 2020 by Findex. All rights reserved.
+    </div>
+  </div>
+</div>
