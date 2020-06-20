@@ -8,8 +8,7 @@ import { User } from '../../shared/models/user.model';
 })
 export class UserService {
 
-  isUserLoggedIn = window.location.pathname !== '/' ? true : false;
-  username: string;
+  connectedUser: User = JSON.parse(localStorage.getItem('connectedUser'));
 
   constructor(private httpClient: HttpClient) { }
 
@@ -21,12 +20,14 @@ export class UserService {
     return this.httpClient.get(environment.serverUrl + `/api/users`);
   }
 
-  changeUserLoggedInStatus() {
-    this.isUserLoggedIn = !this.isUserLoggedIn;
-  }
-
-  setUsername(username: string) {
-    this.username = username;
+  setConnectedUser(user: User) {
+    if (user) {
+      this.connectedUser = user;
+      localStorage.setItem('connectedUser', JSON.stringify(user));
+    } else {
+      this.connectedUser = null;
+      localStorage.removeItem('connectedUser');
+    }
   }
 
   createUser(user: User) {

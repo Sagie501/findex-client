@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { getGreetingSentence } from '../../../../shared/helpers/greeting-sentence';
 import { Router } from '@angular/router';
+import { UserService } from '../../../../services/user/user.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,13 +10,9 @@ import { Router } from '@angular/router';
 })
 export class SidebarComponent implements OnInit {
 
-  // TODO: Fix this
-  loggedInUser = {
-    firstName: 'Sagie'
-  }
   getGreetingSentence = getGreetingSentence;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, public userService: UserService) { }
 
   ngOnInit(): void {
   }
@@ -25,6 +22,6 @@ export class SidebarComponent implements OnInit {
   }
 
   logout() {
-    // TODO
+    this.userService.setConnectedUser(null);
   }
 }

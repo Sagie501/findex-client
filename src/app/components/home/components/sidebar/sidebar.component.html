@@ -1,6 +1,6 @@
 <div class="welcome">
   <div class="welcome__text">
-    <span class="welcome--greeting">{{getGreetingSentence() + ", " + (loggedInUser?.firstName || "Guest") + "!"}}</span>
+    <span class="welcome--greeting">{{getGreetingSentence() + ", " + userService.connectedUser.username + "!"}}</span>
   </div>
 </div>
 
