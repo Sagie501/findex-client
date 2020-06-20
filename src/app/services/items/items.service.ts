@@ -21,4 +21,8 @@ export class ItemsService {
   updateItem(item: Item) {
     return this.httpClient.put(environment.serverUrl + `/api/items/${item.id}`, item);
   }
+
+  getItemsCategoryStatistics() {
+    return this.httpClient.get(environment.serverUrl + `/api/items/getItemsAmountInEachCategory`);
+  }
 }
