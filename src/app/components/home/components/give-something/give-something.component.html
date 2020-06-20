@@ -1,0 +1,36 @@
+<div class="give-something-container">
+  <span style="width: fit-content">Give Something!</span>
+  <form [formGroup]="giveSomethingForm" class="give-something-form" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput required formControlName="name" [errorStateMatcher]="matcher">
+      <mat-error *ngIf="giveSomethingForm.get('name').hasError('required')">
+        Name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Category</mat-label>
+      <mat-select formControlName="category" required>
+        <mat-option *ngFor="let category of categories" [value]="category">
+          {{category}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="giveSomethingForm.get('category').hasError('required')">
+        Category is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>City</mat-label>
+      <input matInput required formControlName="city" [errorStateMatcher]="matcher">
+      <mat-error *ngIf="giveSomethingForm.get('city').hasError('required')">
+        City is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <app-button [text]="'Give Something!'" [type]="'submit'" [disabled]="giveSomethingForm.invalid"
+                matTooltip="{{giveSomethingForm.invalid ? 'Fill all the required fields' : ''}}"
+                [matTooltipPosition]="'above'"></app-button>
+  </form>
+</div>

@@ -24,6 +24,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { StatisticsComponent } from './components/home/components/statistics/statistics.component';
 import { WeatherPipe } from './pipes/weather/weather.pipe';
 import { DecimalPipe } from '@angular/common';
+import { GiveSomethingComponent } from './components/home/components/give-something/give-something.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { DecimalPipe } from '@angular/common';
     MyItemsComponent,
     EditItemDialogComponent,
     StatisticsComponent,
-    WeatherPipe
+    WeatherPipe,
+    GiveSomethingComponent
   ],
   imports: [
     BrowserModule,
