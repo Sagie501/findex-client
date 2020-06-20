@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { getGreetingSentence } from '../../../../shared/helpers/greeting-sentence';
 import { Router } from '@angular/router';
 import { UserService } from '../../../../services/user/user.service';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-sidebar',
@@ -11,10 +13,14 @@ import { UserService } from '../../../../services/user/user.service';
 export class SidebarComponent implements OnInit {
 
   getGreetingSentence = getGreetingSentence;
+  weather: string;
 
-  constructor(private router: Router, public userService: UserService) { }
+  constructor(private router: Router, public userService: UserService, private httpClient: HttpClient) { }
 
   ngOnInit(): void {
+    this.httpClient.get(environment.weatherUrl).subscribe((res: any) => {
+      this.weather = res.main.temp;
+    });
   }
 
   isActiveRoute(route: string) {

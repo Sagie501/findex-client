@@ -50,9 +50,8 @@
     </a>
   </div>
 
-  <!--  TODO: Add Whether Here-->
-
   <div class="sidebar__bottom">
+    <span style="color: white; padding-left: 2rem;">Tel Aviv: {{weather | number: '1.0-0'}}°C</span>
     <a class="sidebar-link sidebar-link__end" routerLink="/" (click)="logout()">
       <svg class="sidebar-link__icon">
         <use xlink:href="assets/linearicons.svg#lnr-exit"></use>
