@@ -4,16 +4,22 @@ import { LoginComponent } from './components/login/login.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { HomeComponent } from './components/home/containers/home.component';
 import { AuthGuard } from './guards/auth/auth.guard';
+import { MyItemsComponent } from './components/home/components/my-items/containers/my-items.component';
 
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'sign-up', component: SignUpComponent },
-  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] }
+  {
+    path: 'home', component: HomeComponent, canActivate: [AuthGuard], children: [
+      { path: 'my-items', component: MyItemsComponent }
+    ]
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

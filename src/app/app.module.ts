@@ -15,6 +15,12 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { HomeComponent } from './components/home/containers/home.component';
 import { SidebarComponent } from './components/home/components/sidebar/sidebar.component';
 import { HeaderComponent } from './components/home/components/header/header.component';
+import { MyItemsComponent } from './components/home/components/my-items/containers/my-items.component';
+import { EditItemDialogComponent } from './components/home/components/my-items/components/edit-item-dialog/edit-item-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -24,7 +30,9 @@ import { HeaderComponent } from './components/home/components/header/header.comp
     SignUpComponent,
     HomeComponent,
     SidebarComponent,
-    HeaderComponent
+    HeaderComponent,
+    MyItemsComponent,
+    EditItemDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +42,11 @@ import { HeaderComponent } from './components/home/components/header/header.comp
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatDialogModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

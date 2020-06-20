@@ -1,0 +1,45 @@
+<div class="my-items">
+  <div class="header">
+    <div class="headline">My Items</div>
+    <div class="sub-headline">
+      <div>
+        {{getGreetingSentence() + ' ' + userService.connectedUser.username }}!
+        <span *ngIf="items?.length > 0">
+          You have {{ items.length }} items.
+        </span>
+        <span *ngIf="items?.length === 0">
+          It looks like you don't have items yet.
+          <br>
+          Start share your own items now!
+        </span>
+      </div>
+      <app-button [text]="'Add new item'" (clicked)="navigateToNewItem()"></app-button>
+    </div>
+  </div>
+
+
+  <div class="items-table">
+    <table class="table">
+      <tr class="table__header">
+        <th>Name</th>
+        <th>Category</th>
+        <th>City</th>
+        <th>Actions</th>
+      </tr>
+      <tr *ngFor="let item of items">
+        <td>{{ item.name }}</td>
+        <td>{{ item.category }}</td>
+        <td>{{ item.city }}</td>
+        <td class="actions-cell">
+          <div>
+            <app-button [text]="'Edit'" (clicked)="openEditItemDialog(item);"></app-button>
+            <app-button [text]="'Delete'" (clicked)="deleteItem(item.id)"></app-button>
+            <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/intent/tweet?screen_name=findex&text=Look at my item!">
+              <img style="height: 17px;width: 20px;" src="../../../../../../assets/images/twitter.jpg"/>
+            </a>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

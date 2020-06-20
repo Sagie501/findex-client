@@ -1,0 +1,123 @@
+@import "colors";
+@import "variables";
+
+.overlay {
+  padding: 1.5rem;
+  border-radius: 2rem;
+  background-color: @text-color;
+  box-shadow: 0 0 10px rgba(#000, 0.2);
+  overflow-y: auto;
+}
+
+.filter {
+  border-radius: 2rem;
+  border: 2px solid @secondary-color;
+  background-color: @text-color;
+  transition: all 0.2s;
+
+  cursor: pointer;
+
+  width: @dropdown-width;
+  height: 3.5rem;
+  padding: 0 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &:hover {
+    border: 2px solid darken(@secondary-color, 20%);
+  }
+
+  &:hover > .arrow {
+    fill: darken(@secondary-color, 20%);
+  }
+}
+
+.headline {
+  font-weight: 300;
+  font-size: 2.4rem;
+  color: @primary-color;
+}
+
+.sub-headline {
+  font-weight: 400;
+  font-size: 1.8rem;
+  color: rgba(@primary-color, 0.8);
+  margin-bottom: 0.5rem;
+}
+
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 0;
+  border-color: darken(@text-color, 10%);
+  color: darken(@text-color, 50%);
+
+  &__header > th {
+    text-align: left;
+    padding: 1rem 0.5rem 1rem 0;
+
+    border-bottom: 1px solid darken(@text-color, 10%);
+  }
+
+  tr:not(&__header):not(.no_hover):hover {
+    background-color: rgba(0, 0, 0, 0.075);
+  }
+
+  td {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid darken(@text-color, 10%);
+    min-height: 7rem;
+    font-size: 1.6rem;
+    padding-left: 0.5rem;
+  }
+}
+
+.link {
+  color: @secondary-color;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 0.2rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  backface-visibility: hidden;
+  text-decoration: none;
+
+  &:hover {
+    border-bottom: 1px solid @hover-color;
+    color: @hover-color;
+  }
+}
+
+.admin-tab {
+  padding-top: 2rem;
+  height: calc(100vh - @header-height - 48px);
+}
+
+.mat-tab-body-content {
+  overflow: unset !important;
+}
+
+input[type="tel"],
+input[type="text"] {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid @text-color;
+  color: @text-color;
+  outline: none;
+  padding: 1rem;
+  font-size: 1.8rem;
+  font-family: "Roboto", sans-serif;
+  letter-spacing: 0.1rem;
+
+  &::placeholder {
+    font-size: 1.8rem;
+    font-family: "Roboto", sans-serif;
+    letter-spacing: 0.1rem;
+    color: darken(@text-color, 20%);
+  }
+}
+
+img.image {
+  object-fit: contain;
+}
