@@ -3,7 +3,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Item } from '../../../../../../shared/models/item.model';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MyErrorStateMatcher } from '../../../../../../shared/helpers/error-state-matcher';
-import { CategoryService } from '../../../../../../service/category/category.service';
+import { CategoryService } from '../../../../../../services/category/category.service';
 
 @Component({
   selector: 'app-edit-item-dialog',

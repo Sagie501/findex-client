@@ -5,6 +5,7 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { HomeComponent } from './components/home/containers/home.component';
 import { AuthGuard } from './guards/auth/auth.guard';
 import { MyItemsComponent } from './components/home/components/my-items/containers/my-items.component';
+import { StatisticsComponent } from './components/home/components/statistics/statistics.component';
 
 
 const routes: Routes = [
@@ -12,7 +13,8 @@ const routes: Routes = [
   { path: 'sign-up', component: SignUpComponent },
   {
     path: 'home', component: HomeComponent, canActivate: [AuthGuard], children: [
-      { path: 'my-items', component: MyItemsComponent }
+      { path: 'my-items', component: MyItemsComponent },
+      { path: 'statistics', component: StatisticsComponent }
     ]
   }
 ];

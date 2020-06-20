@@ -21,6 +21,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { StatisticsComponent } from './components/home/components/statistics/statistics.component';
+import { WeatherPipe } from './pipes/weather/weather.pipe';
+import { DecimalPipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     SidebarComponent,
     HeaderComponent,
     MyItemsComponent,
-    EditItemDialogComponent
+    EditItemDialogComponent,
+    StatisticsComponent,
+    WeatherPipe
   ],
   imports: [
     BrowserModule,
@@ -48,7 +53,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatButtonModule,
     MatSnackBarModule
   ],
-  providers: [],
+  providers: [DecimalPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

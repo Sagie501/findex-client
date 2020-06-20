@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { UserService } from '../../../../services/user/user.service';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../../environments/environment';
+import { TemperatureScales } from '../../../../pipes/weather/weather.pipe';
 
 @Component({
   selector: 'app-sidebar',
@@ -14,6 +15,7 @@ export class SidebarComponent implements OnInit {
 
   getGreetingSentence = getGreetingSentence;
   weather: string;
+  temperatureScales = TemperatureScales;
 
   constructor(private router: Router, public userService: UserService, private httpClient: HttpClient) { }
 
