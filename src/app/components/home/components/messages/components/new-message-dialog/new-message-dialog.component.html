@@ -1,0 +1,43 @@
+<div class="message-dialog">
+  <span class="header" mat-dialog-title>{{'Send new message!'}}</span>
+  <div mat-dialog-content>
+    <form [formGroup]="messageFormGroup" class="message-form">
+      <mat-form-field>
+        <mat-label>Destination user</mat-label>
+        <mat-select formControlName="destUser" required>
+          <mat-option *ngFor="let user of users" [value]="user">
+            {{user}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="messageFormGroup.get('destUser').hasError('required')">
+          Destination user is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Title</mat-label>
+        <input required matInput formControlName="title" [errorStateMatcher]="matcher">
+        <mat-error *ngIf="messageFormGroup.get('title').hasError('required')">
+          Title is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Content</mat-label>
+        <textarea required matInput formControlName="content" [errorStateMatcher]="matcher"
+                  cdkTextareaAutosize cdkAutosizeMinRows="1" cdkAutosizeMaxRows="2"></textarea>
+        <mat-error *ngIf="messageFormGroup.get('content').hasError('required')">
+          Content is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </form>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-stroked-button mat-dialog-close color="primary"
+            (click)="sendNewMessageEvent.emit(messageFormGroup.value)"
+            [disabled]="messageFormGroup.invalid">
+      Send message
+    </button>
+    <button mat-stroked-button color="warn" mat-dialog-close>Never mind</button>
+  </div>
+</div>

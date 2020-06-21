@@ -1,0 +1,38 @@
+<div class="messages">
+  <div class="header">
+    <div class="headline">Messages</div>
+    <div class="sub-headline">
+      <div>
+        {{getGreetingSentence() + ' ' + userService.connectedUser.username }}!
+        <span *ngIf="messages?.length > 0">
+          You have {{ messages.length }} messages.
+        </span>
+        <br>
+        <span *ngIf="messages?.length === 0">
+          It looks like you don't have messages yet.
+        </span>
+      </div>
+      <app-button [text]="'Send new message'" (clicked)="openNewMessageDialog()"></app-button>
+    </div>
+  </div>
+
+
+  <div class="items-table">
+    <table class="table">
+      <tr class="table__header">
+        <th>Sent from</th>
+        <th>Title</th>
+        <th>Content</th>
+        <th>Actions</th>
+      </tr>
+      <tr *ngFor="let message of messages">
+        <td>{{ message.sourceUser.username }}</td>
+        <td>{{ message.title }}</td>
+        <td style="max-width: 20rem">{{ message.content }}</td>
+        <td class="actions-cell">
+          <app-button [text]="'Reply'" (clicked)="openNewMessageDialog(message.sourceUser);"></app-button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

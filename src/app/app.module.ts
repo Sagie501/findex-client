@@ -25,6 +25,8 @@ import { StatisticsComponent } from './components/home/components/statistics/sta
 import { WeatherPipe } from './pipes/weather/weather.pipe';
 import { DecimalPipe } from '@angular/common';
 import { GiveSomethingComponent } from './components/home/components/give-something/give-something.component';
+import { MessagesComponent } from './components/home/components/messages/containers/messages.component';
+import { NewMessageDialogComponent } from './components/home/components/messages/components/new-message-dialog/new-message-dialog.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { GiveSomethingComponent } from './components/home/components/give-someth
     EditItemDialogComponent,
     StatisticsComponent,
     WeatherPipe,
-    GiveSomethingComponent
+    GiveSomethingComponent,
+    MessagesComponent,
+    NewMessageDialogComponent
   ],
   imports: [
     BrowserModule,

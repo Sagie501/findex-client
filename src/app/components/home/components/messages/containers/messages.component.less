@@ -1,0 +1,36 @@
+@import "../../../../../../styles/styles";
+
+.messages {
+  width: calc(100vw - @sidebar-width);
+  height: calc(100vh - @header-height);
+  background-color: @text-color;
+  overflow-y: auto;
+
+  .header {
+    padding: 2rem 3rem;
+
+    .headline {
+      margin-bottom: 1rem;
+    }
+
+    .sub-headline {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  .items-table {
+    overflow-x: auto;
+    width: calc(100vw - @sidebar-width - 6rem);
+    margin: 0 3rem;
+    overflow-y: hidden;
+
+    .actions-cell {
+      width: 15rem;
+    }
+
+    tr:focus {
+      outline: none;
+    }
+  }
+}
