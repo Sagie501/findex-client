@@ -33,6 +33,8 @@ export class NewMessageDialogComponent implements OnInit {
         let userIndex = this.users.findIndex((user) => user === this.data.destUser.username);
         this.messageFormGroup.get('destUser').patchValue(this.users[userIndex]);
       }
+      let currUserIndex = this.users.findIndex((user) => user === this.userService.connectedUser.username);
+      this.users.splice(currUserIndex, 1);
     });
   }
 }

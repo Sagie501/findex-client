@@ -37,4 +37,8 @@ export class ItemsService {
       description: 'No description'
     });
   }
+
+  fetchAllItems() {
+    return this.httpClient.get(environment.serverUrl + `/api/items/`);
+  }
 }
