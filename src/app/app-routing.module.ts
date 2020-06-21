@@ -10,6 +10,7 @@ import { GiveSomethingComponent } from './components/home/components/give-someth
 import { MessagesComponent } from './components/home/components/messages/containers/messages.component';
 import { TakeSomethingComponent } from './components/home/components/take-something/take-something.component';
 import { FindexHomeComponent } from './components/home/components/findex-home/findex-home.component';
+import { ContactUsComponent } from './components/home/components/contact-us/contact-us.component';
 
 
 const routes: Routes = [
@@ -27,7 +28,8 @@ const routes: Routes = [
       { path: 'statistics', component: StatisticsComponent },
       { path: 'give-something', component: GiveSomethingComponent },
       { path: 'messages', component: MessagesComponent },
-      { path: 'take-something', component: TakeSomethingComponent }
+      { path: 'take-something', component: TakeSomethingComponent },
+      { path: 'contact-us', component: ContactUsComponent }
     ]
   }
 ];

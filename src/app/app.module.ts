@@ -29,6 +29,7 @@ import { MessagesComponent } from './components/home/components/messages/contain
 import { NewMessageDialogComponent } from './components/home/components/messages/components/new-message-dialog/new-message-dialog.component';
 import { TakeSomethingComponent } from './components/home/components/take-something/take-something.component';
 import { FindexHomeComponent } from './components/home/components/findex-home/findex-home.component';
+import { ContactUsComponent } from './components/home/components/contact-us/contact-us.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { FindexHomeComponent } from './components/home/components/findex-home/fi
     MessagesComponent,
     NewMessageDialogComponent,
     TakeSomethingComponent,
-    FindexHomeComponent
+    FindexHomeComponent,
+    ContactUsComponent
   ],
   imports: [
     BrowserModule,
