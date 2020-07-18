@@ -30,6 +30,7 @@ import { NewMessageDialogComponent } from './components/home/components/messages
 import { TakeSomethingComponent } from './components/home/components/take-something/take-something.component';
 import { FindexHomeComponent } from './components/home/components/findex-home/findex-home.component';
 import { ContactUsComponent } from './components/home/components/contact-us/contact-us.component';
+import { PieChartComponent } from './shared/components/pie-chart/pie-chart.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { ContactUsComponent } from './components/home/components/contact-us/cont
     NewMessageDialogComponent,
     TakeSomethingComponent,
     FindexHomeComponent,
-    ContactUsComponent
+    ContactUsComponent,
+    PieChartComponent
   ],
   imports: [
     BrowserModule,
