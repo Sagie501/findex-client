@@ -1,17 +1,16 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './components/login/login.component';
-import { SignUpComponent } from './components/sign-up/sign-up.component';
-import { HomeComponent } from './components/home/containers/home.component';
-import { AuthGuard } from './guards/auth/auth.guard';
-import { MyItemsComponent } from './components/home/components/my-items/containers/my-items.component';
-import { StatisticsComponent } from './components/home/components/statistics/statistics.component';
-import { GiveSomethingComponent } from './components/home/components/give-something/give-something.component';
-import { MessagesComponent } from './components/home/components/messages/containers/messages.component';
-import { TakeSomethingComponent } from './components/home/components/take-something/take-something.component';
-import { FindexHomeComponent } from './components/home/components/findex-home/findex-home.component';
-import { ContactUsComponent } from './components/home/components/contact-us/contact-us.component';
-
+import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './core/containers/login/login.component';
+import { SignUpComponent } from './core/containers/sign-up/sign-up.component';
+import { HomeComponent } from './core/containers/home/home.component';
+import { FindexHomeComponent } from './core/components/findex-home/findex-home.component';
+import { GiveSomethingComponent } from './core/components/give-something/give-something.component';
+import { TakeSomethingComponent } from './core/components/take-something/take-something.component';
+import { ContactUsComponent } from './core/components/contact-us/contact-us.component';
+import { StatisticsComponent } from './features/statistics/containers/statistics/statistics.component';
+import { AuthGuard } from './core/guards/auth/auth.guard';
+import { MyItemsComponent } from './core/components/my-items/containers/my-items.component';
+import { MessagesComponent } from './core/components/messages/containers/messages.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
