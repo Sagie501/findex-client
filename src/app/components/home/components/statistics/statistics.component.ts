@@ -13,6 +13,9 @@ import * as d3Shape from 'd3-shape';
 })
 export class StatisticsComponent implements OnInit {
 
+  amountOfItemsInEachCategory = [];
+  
+  trigger = '';
   categoriesColors: Array<string> = [
     '#2ecc71',
     '#e74c3c',
@@ -20,21 +23,37 @@ export class StatisticsComponent implements OnInit {
     '#f1c40f',
   ];
 
-  amountOfItemsInEachCategory: Array<any> = [];
 
-  constructor(private categoryService: CategoryService, private itemsService: ItemsService) { }
 
-  ngOnInit(): void {
-    forkJoin([this.categoryService.fetchAllCategories(), this.itemsService.getItemsCategoryStatistics()]).subscribe((res) => {
-      let categories: Array<any> = (res[0] as any).categories;
-      let itemPerCategory: Array<any> = (res[1] as any).categories;
-      categories.forEach((category) => {
-        let itemInCategory = itemPerCategory.find((currCategory) => currCategory._id === category._id);
-        this.amountOfItemsInEachCategory.push({
-          ...category,
-          count: itemInCategory.count
-        });
+  constructor(private categoryService: CategoryService, private itemService: ItemsService) {
+
+  }
+
+  ngOnInit() {
+
+    // amount of each category
+    this.categoryService.fetchAllCategories().subscribe((data) => {
+      (data as any).categories.forEach((currCategory) => {
+        this.amountOfItemsInEachCategory.push(currCategory);
       });
+      this.countAmountsOfEachCategory();
     });
+
+
+  }
+
+  private countAmountsOfEachCategory() {
+    this.itemService.getItemsCategoryStatistics().subscribe((data) => {
+      for (const currCategory of this.amountOfItemsInEachCategory) {
+        for (const categoryStat of (data as any).categories) {
+          if (categoryStat._id === currCategory._id) {
+            currCategory.amount = categoryStat.count;
+          }
+        }
+      }
+      this.trigger = 'triger';
+    });
+
+
   }
 }
