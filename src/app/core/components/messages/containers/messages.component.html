@@ -3,19 +3,46 @@
     <div class="headline">Messages</div>
     <div class="sub-headline">
       <div>
-        {{getGreetingSentence() + ' ' + userService.connectedUser.username }}!
+        {{ getGreetingSentence() + " " + userService.connectedUser.username }}!
         <span *ngIf="messages?.length > 0">
           You have {{ messages.length }} messages.
         </span>
-        <br>
+        <br />
         <span *ngIf="messages?.length === 0">
           It looks like you don't have messages yet.
         </span>
       </div>
-      <app-button [text]="'Send new message'" (clicked)="openNewMessageDialog()"></app-button>
+      <app-button
+        [text]="'Send new message'"
+        (clicked)="openNewMessageDialog()"
+      ></app-button>
     </div>
   </div>
 
+  <div class="search">
+    <input
+      type="text"
+      [(ngModel)]="sourceUser"
+      name="sourceUser"
+      id="sourceUser"
+      placeholder="From"
+    />
+    <input
+      type="text"
+      [(ngModel)]="title"
+      name="title"
+      id="title"
+      placeholder="Title"
+    />
+    <input
+      type="text"
+      [(ngModel)]="content"
+      name="content"
+      id="content"
+      placeholder="Content"
+    />
+    <app-button [text]="'Search...'" (clicked)="search()"></app-button>
+  </div>
 
   <div class="items-table">
     <table class="table">
@@ -28,9 +55,12 @@
       <tr *ngFor="let message of messages">
         <td>{{ message.sourceUser.username }}</td>
         <td>{{ message.title }}</td>
-        <td style="max-width: 20rem">{{ message.content }}</td>
+        <td style="max-width: 20rem;">{{ message.content }}</td>
         <td class="actions-cell">
-          <app-button [text]="'Reply'" (clicked)="openNewMessageDialog(message.sourceUser);"></app-button>
+          <app-button
+            [text]="'Reply'"
+            (clicked)="openNewMessageDialog(message.sourceUser)"
+          ></app-button>
         </td>
       </tr>
     </table>

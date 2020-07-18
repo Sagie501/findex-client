@@ -12,15 +12,23 @@ import { WebSocketService } from '../../../services/web-socket/web-socket.servic
 @Component({
   selector: 'app-messages',
   templateUrl: './messages.component.html',
-  styleUrls: ['./messages.component.less']
+  styleUrls: ['./messages.component.less'],
 })
 export class MessagesComponent implements OnInit {
-
   messages: Message[] = [];
   getGreetingSentence = getGreetingSentence;
 
-  constructor(public userService: UserService, private messageService: MessageService, private dialog: MatDialog,
-              private snackBar: MatSnackBar, private webSocketService: WebSocketService) { }
+  sourceUser: string;
+  title: string;
+  content: string;
+
+  constructor(
+    public userService: UserService,
+    private messageService: MessageService,
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar,
+    private webSocketService: WebSocketService
+  ) {}
 
   ngOnInit(): void {
     this.fetchMessages();
@@ -33,26 +41,44 @@ export class MessagesComponent implements OnInit {
     let itemDialogRef = this.dialog.open(NewMessageDialogComponent, {
       autoFocus: false,
       data: {
-        destUser
-      }
+        destUser,
+      },
     });
 
     itemDialogRef.componentInstance.sendNewMessageEvent.subscribe((message) => {
       message.sourceUser = this.userService.connectedUser.username;
       this.messageService.createMessage(message).subscribe(() => {
         this.snackBar.open('Your message has been sent!', 'OK', {
-          duration: 3000
+          duration: 3000,
         });
       });
-    })
+    });
   }
 
   fetchMessages() {
     this.messages = [];
-    this.messageService.getMessagesByUser(this.userService.connectedUser.username).subscribe((data) => {
-      (data as any).messages.forEach((currMessage) => {
-        this.messages.push(currMessage);
+    this.messageService
+      .getMessagesByUser(this.userService.connectedUser.username)
+      .subscribe((data) => {
+        (data as any).messages.forEach((currMessage) => {
+          this.messages.push(currMessage);
+        });
       });
-    });
+  }
+
+  search() {
+    this.messageService
+      .searchMessages(
+        this.userService.connectedUser.username,
+        this.sourceUser,
+        this.title,
+        this.content
+      )
+      .subscribe((data) => {
+        this.messages = [];
+        (data as any).messages.forEach((currMessage) => {
+          this.messages.push(currMessage);
+        });
+      });
   }
 }
