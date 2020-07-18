@@ -5,12 +5,11 @@ import { ItemsService } from 'src/app/core/services/items/items.service';
 @Component({
   selector: 'app-statistics',
   templateUrl: './statistics.component.html',
-  styleUrls: ['./statistics.component.less']
+  styleUrls: ['./statistics.component.less'],
 })
 export class StatisticsComponent implements OnInit {
-
   amountOfItemsInEachCategory = [];
-  
+
   trigger = '';
   categoriesColors: Array<string> = [
     '#2ecc71',
@@ -19,14 +18,12 @@ export class StatisticsComponent implements OnInit {
     '#f1c40f',
   ];
 
-
-
-  constructor(private categoryService: CategoryService, private itemService: ItemsService) {
-
-  }
+  constructor(
+    private categoryService: CategoryService,
+    private itemService: ItemsService
+  ) {}
 
   ngOnInit() {
-
     // amount of each category
     this.categoryService.fetchAllCategories().subscribe((data) => {
       (data as any).categories.forEach((currCategory) => {
@@ -34,8 +31,6 @@ export class StatisticsComponent implements OnInit {
       });
       this.countAmountsOfEachCategory();
     });
-
-
   }
 
   private countAmountsOfEachCategory() {
@@ -49,7 +44,5 @@ export class StatisticsComponent implements OnInit {
       }
       this.trigger = 'triger';
     });
-
-
   }
 }

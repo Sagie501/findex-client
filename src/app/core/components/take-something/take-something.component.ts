@@ -11,14 +11,22 @@ import { MessageService } from '../../services/message/message.service';
 @Component({
   selector: 'app-take-something',
   templateUrl: './take-something.component.html',
-  styleUrls: ['./take-something.component.less']
+  styleUrls: ['./take-something.component.less'],
 })
 export class TakeSomethingComponent implements OnInit {
-
   items: Item[] = [];
 
-  constructor(private itemsService: ItemsService, private dialog: MatDialog, private snackBar: MatSnackBar,
-              public userService: UserService, private messageService: MessageService) { }
+  itemName: string;
+  category: string;
+  city: string;
+
+  constructor(
+    private itemsService: ItemsService,
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar,
+    public userService: UserService,
+    private messageService: MessageService
+  ) {}
 
   ngOnInit(): void {
     this.itemsService.fetchAllItems().subscribe((data) => {
@@ -27,7 +35,7 @@ export class TakeSomethingComponent implements OnInit {
         delete currItem.username;
         return {
           ...currItem,
-          category: currItem.category.name
+          category: currItem.category.name,
         };
       });
     });
@@ -37,17 +45,32 @@ export class TakeSomethingComponent implements OnInit {
     let itemDialogRef = this.dialog.open(NewMessageDialogComponent, {
       autoFocus: false,
       data: {
-        destUser
-      }
+        destUser,
+      },
     });
 
     itemDialogRef.componentInstance.sendNewMessageEvent.subscribe((message) => {
       message.sourceUser = this.userService.connectedUser.username;
       this.messageService.createMessage(message).subscribe(() => {
         this.snackBar.open('Your message has been sent!', 'OK', {
-          duration: 3000
+          duration: 3000,
         });
       });
-    })
+    });
+  }
+
+  search() {
+    this.itemsService
+      .searchItems(this.itemName, this.category, this.city)
+      .subscribe((data) => {
+        this.items = (data as any).items.map((currItem) => {
+          currItem.owner = currItem.username;
+          delete currItem.username;
+          return {
+            ...currItem,
+            category: currItem.category.name,
+          };
+        });
+      });
   }
 }

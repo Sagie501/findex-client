@@ -3,6 +3,31 @@
     <div class="headline">Take something!</div>
   </div>
 
+  <div class="search">
+    <input
+      type="text"
+      [(ngModel)]="itemName"
+      name="itemName"
+      id="itemName"
+      placeholder="Item name"
+    />
+    <input
+      type="text"
+      [(ngModel)]="category"
+      name="category"
+      id="category"
+      placeholder="Category"
+    />
+    <input
+      type="text"
+      [(ngModel)]="city"
+      name="city"
+      id="city"
+      placeholder="City"
+    />
+    <app-button [text]="'Search...'" (clicked)="search()"></app-button>
+  </div>
+
   <div class="items-table">
     <table class="table">
       <tr class="table__header">
@@ -17,17 +42,24 @@
         <td>{{ item.category }}</td>
         <td>{{ item.city }}</td>
         <td>
-          <div style="display: flex; flex-direction: column">
-            <span><b>Name: </b> {{item.owner.fullName}}</span>
-            <span><b>City: </b> {{item.owner.city}}</span>
-            <span><b>Phone: </b> {{item.owner.phone}}</span>
+          <div style="display: flex; flex-direction: column;">
+            <span><b>Name: </b> {{ item.owner.fullName }}</span>
+            <span><b>City: </b> {{ item.owner.city }}</span>
+            <span><b>Phone: </b> {{ item.owner.phone }}</span>
           </div>
         </td>
         <td class="actions-cell">
-          <app-button [text]="'Send Message'" [disabled]="item.owner._id === userService.connectedUser._id"
-                      (clicked)="openNewMessageDialog(item.owner)"
-                      matTooltip="{{item.owner._id === userService.connectedUser._id ? 'You can\'t send message to yourself' : ''}}"
-                      [matTooltipPosition]="'above'"></app-button>
+          <app-button
+            [text]="'Send Message'"
+            [disabled]="item.owner._id === userService.connectedUser._id"
+            (clicked)="openNewMessageDialog(item.owner)"
+            matTooltip="{{
+              item.owner._id === userService.connectedUser._id
+                ? 'You can\'t send message to yourself'
+                : ''
+            }}"
+            [matTooltipPosition]="'above'"
+          ></app-button>
         </td>
       </tr>
     </table>

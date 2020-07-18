@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AppComponent } from './containers/app/app.component'
+import { AppComponent } from './containers/app/app.component';
 import { HomeComponent } from './containers/home/home.component';
 import { LoginComponent } from './containers/login/login.component';
 import { SignUpComponent } from './containers/sign-up/sign-up.component';
@@ -45,17 +45,17 @@ import { NewMessageDialogComponent } from './components/messages/components/new-
     EditItemDialogComponent,
     MyItemsComponent,
     SidebarComponent,
-    TakeSomethingComponent
+    TakeSomethingComponent,
   ],
   imports: [
     CommonModule,
+    FormsModule,
     BrowserModule,
     BrowserAnimationsModule,
-    HttpClientModule,    
+    HttpClientModule,
     AppRoutingModule,
     MatFormFieldModule,
     MatInputModule,
-    FormsModule,
     ReactiveFormsModule,
     MatTooltipModule,
     MatDialogModule,
@@ -63,8 +63,8 @@ import { NewMessageDialogComponent } from './components/messages/components/new-
     MatButtonModule,
     MatSnackBarModule,
     SharedModule,
-    StatisticsModule
+    StatisticsModule,
   ],
-  exports: [AppComponent]
+  exports: [AppComponent],
 })
-export class CoreModule { }
+export class CoreModule {}
