@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryService } from 'src/app/core/services/category/category.service';
 import { ItemsService } from 'src/app/core/services/items/items.service';
+var createCountMinSketch = require('count-min-sketch');
 
 @Component({
   selector: 'app-statistics',
@@ -34,15 +35,16 @@ export class StatisticsComponent implements OnInit {
   }
 
   private countAmountsOfEachCategory() {
-    this.itemService.getItemsCategoryStatistics().subscribe((data) => {
+    this.itemService.getItemsCategoryStatistics().subscribe((data: any) => {
+      let sketch = createCountMinSketch();
+      let cms = sketch.fromJSON(data.categories);
       for (const currCategory of this.amountOfItemsInEachCategory) {
-        for (const categoryStat of (data as any).categories) {
-          if (categoryStat._id === currCategory._id) {
-            currCategory.amount = categoryStat.count;
-          }
-        }
+        currCategory.amount = cms.query(currCategory.name);
       }
       this.trigger = 'triger';
+      this.amountOfItemsInEachCategory = this.amountOfItemsInEachCategory.filter(
+        (cat) => cat.amount
+      );
     });
   }
 }
