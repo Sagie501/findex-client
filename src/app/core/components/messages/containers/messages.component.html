@@ -57,10 +57,16 @@
         <td>{{ message.title }}</td>
         <td style="max-width: 20rem;">{{ message.content }}</td>
         <td class="actions-cell">
-          <app-button
-            [text]="'Reply'"
-            (clicked)="openNewMessageDialog(message.sourceUser)"
-          ></app-button>
+          <div style="display: flex; align-items: center; justify-content: space-evenly;">
+            <app-button
+              [text]="'Reply'"
+              (clicked)="openNewMessageDialog(message.sourceUser)"
+            ></app-button>
+            <app-button
+              [text]="'Delete'"
+              (clicked)="deleteMessage(message._id)"
+            ></app-button>
+          </div>
         </td>
       </tr>
     </table>

@@ -81,4 +81,12 @@ export class MessagesComponent implements OnInit {
         });
       });
   }
+
+  deleteMessage(id) {
+    this.messageService.deleteMessage(id).subscribe((res: any) => {
+      if (res.success) {
+        this.messages = this.messages.filter((currMessage) => !(currMessage._id === id));
+      }
+    });
+  }
 }
