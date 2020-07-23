@@ -58,7 +58,7 @@ export class SignUpComponent implements OnInit {
       username: this.signUpForm.get('username').value,
       phone: this.signUpForm.get('phone').value
     } as User;
-    this.userService.createUser(user).subscribe((data: any) => {
+    this.userService.saveUser(user).subscribe((data: any) => {
       if (data.success) {
         this.userService.setConnectedUser(user);
         this.router.navigateByUrl('home');

@@ -1,0 +1,65 @@
+@import "../../../../../styles/styles";
+
+.line {
+  flex: 1;
+  border-top-width: 0.2rem;
+  border-top-style: solid;
+  color: rgba(68, 34, 68, 0.34);
+}
+
+.my-account {
+  background-color: @text-color;
+  height: 100%;
+}
+
+.account-page {
+  margin-left: 4rem;
+  margin-right: 50rem;
+  width: 80%;
+
+  &__title {
+    padding-top: 2rem;
+    margin-bottom: 1.5rem;
+    font-size: 2.5rem;
+  }
+}
+
+.header {
+  position: absolute;
+  margin-top: 2rem;
+  color: gray;
+}
+
+.user-details {
+  float: right;
+  width: 65%;
+  // font-weight: 500;
+  height: 15rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+}
+
+.detail {
+  display: inline;
+}
+
+.account {
+  display: grid;
+  margin-bottom: 3rem;
+  width: 100%;
+}
+
+.user-account {
+  float: right;
+  display: inline-flex;
+  width: 80%;
+  margin-top: 2rem;
+}
+
+.account-section-link {
+  display: inline-block;
+  color: cornflowerblue;
+  text-decoration: underline;
+  cursor: pointer;
+}

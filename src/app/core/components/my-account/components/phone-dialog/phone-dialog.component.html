@@ -1,0 +1,22 @@
+<div class="email-dialog">
+  <span class="header" mat-dialog-title>Changing your Phone</span>
+  <div mat-dialog-content>
+    <div class="line">
+      <span>Current Phone:</span>
+      <span>{{ data.phone }}</span>
+    </div>
+    <div class="line">
+      <span>New Phone:</span>
+      <mat-form-field>
+        <mat-label>Phone</mat-label>
+        <input matInput [formControl]="phoneFormControl" [errorStateMatcher]="matcher"
+               placeholder="Phone">
+      </mat-form-field>
+    </div>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-stroked-button color="primary" (click)="changeUserEvent.emit(phoneFormControl.value)"
+            [disabled]="phoneFormControl.invalid">Change my phone</button>
+    <button mat-stroked-button color="warn" mat-dialog-close>Never mind</button>
+  </div>
+</div>

@@ -29,6 +29,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { EditItemDialogComponent } from './components/my-items/components/edit-item-dialog/edit-item-dialog.component';
 import { NewMessageDialogComponent } from './components/messages/components/new-message-dialog/new-message-dialog.component';
+import { MyAccountComponent } from './components/my-account/containers/my-account.component';
+import { PasswordDialogComponent } from './components/my-account/components/password-dialog/password-dialog.component';
+import { CityDialogComponent } from './components/my-account/components/city-dialog/city-dialog.component';
+import { PhoneDialogComponent } from './components/my-account/components/phone-dialog/phone-dialog.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +50,10 @@ import { NewMessageDialogComponent } from './components/messages/components/new-
     MyItemsComponent,
     SidebarComponent,
     TakeSomethingComponent,
+    MyAccountComponent,
+    PasswordDialogComponent,
+    CityDialogComponent,
+    PhoneDialogComponent
   ],
   imports: [
     CommonModule,

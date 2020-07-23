@@ -1,0 +1,55 @@
+<div class="my-account">
+  <div class="account-page">
+    <div class="account-page__title">Account</div>
+    <div class="account">
+      <div class="line"></div>
+      <!-- membership -->
+      <div class="account-section">
+        <div class="header">Membership</div>
+        <section class="user-account">
+          <div class="user-details">
+            <div class="first-name">
+              Name:
+              <div class="detail">{{ userService.connectedUser.fullName }}</div>
+            </div>
+            <span class="empty"></span>
+            <div class="phone">
+              Phone:
+              <div class="detail">{{ userService.connectedUser.phone }}</div>
+            </div>
+            <a
+              data-uia="account-phone-link"
+              class="account-section-link"
+              (click)="openPhoneDialog()"
+            >Change account phone</a
+            >
+            <div class="password">
+              Password:
+              <div class="detail">*********</div>
+            </div>
+            <a
+              data-uia="account-email-link"
+              class="account-section-link"
+              (click)="openPasswordDialog()"
+            >Change password</a
+            >
+            <div class="city">
+              City:
+              <div class="detail">
+                {{
+                userService.connectedUser.city
+                }}
+              </div>
+            </div>
+            <a
+              data-uia="account-email-link"
+              class="account-section-link"
+              (click)="openAddressDialog()"
+            >Change address</a
+            >
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>

@@ -11,6 +11,7 @@ import { StatisticsComponent } from './features/statistics/containers/statistics
 import { AuthGuard } from './core/guards/auth/auth.guard';
 import { MyItemsComponent } from './core/components/my-items/containers/my-items.component';
 import { MessagesComponent } from './core/components/messages/containers/messages.component';
+import { MyAccountComponent } from './core/components/my-account/containers/my-account.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -24,6 +25,7 @@ const routes: Routes = [
     path: 'home', component: HomeComponent, canActivate: [AuthGuard], children: [
       { path: 'findex', component: FindexHomeComponent },
       { path: 'my-items', component: MyItemsComponent },
+      { path: 'my-account', component: MyAccountComponent },
       { path: 'statistics', component: StatisticsComponent },
       { path: 'give-something', component: GiveSomethingComponent },
       { path: 'messages', component: MessagesComponent },

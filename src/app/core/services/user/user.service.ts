@@ -34,7 +34,7 @@ export class UserService {
     }
   }
 
-  createUser(user: User) {
+  saveUser(user: User) {
     return this.httpClient.post(environment.serverUrl + `/api/users/`, user);
   }
 
