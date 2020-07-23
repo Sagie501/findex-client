@@ -60,7 +60,7 @@ export class SignUpComponent implements OnInit {
     } as User;
     this.userService.saveUser(user).subscribe((data: any) => {
       if (data.success) {
-        this.userService.setConnectedUser(user);
+        this.userService.setConnectedUser(data.user);
         this.router.navigateByUrl('home');
       } else {
         this.signUpErrorMessage = 'Something went wrong, try again later.'
